@@ -168,11 +168,29 @@
     white-space:nowrap;
   }
   .btn-primary{
+    position:relative;
+    overflow:hidden;
     background:linear-gradient(135deg,var(--rose-gold),var(--mauve));
     color:var(--white);
     box-shadow:var(--shadow-sm);
   }
   .btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
+  .btn-primary::after{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-60%;
+    width:35%;
+    height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,0.55), transparent);
+    transform:skewX(-20deg);
+    transition:left .65s ease;
+    pointer-events:none;
+  }
+  .btn-primary:hover::after{left:130%;}
+  @media (prefers-reduced-motion: reduce){
+    .btn-primary::after{display:none;}
+  }
   .btn-outline{
     background:transparent;
     border-color:rgba(43,35,30,0.28);
@@ -382,9 +400,10 @@
     display:flex;
     align-items:center;
     color:#fff;
+    --hero-shift:0px;
     background:
       linear-gradient(180deg, rgba(30,22,18,0.55) 0%, rgba(30,22,18,0.72) 55%, rgba(20,15,12,0.88) 100%),
-      url('images/hero.jpg') center 30%/cover no-repeat;
+      url('images/hero.jpg') center calc(30% + var(--hero-shift)) / cover no-repeat;
   }
   .hero-badge{
     position:absolute;
@@ -487,13 +506,63 @@
     transition:transform .3s ease, box-shadow .3s ease;
   }
   .service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
-  .service-media{aspect-ratio:4/3;}
-  .service-media img{width:100%;height:100%;object-fit:cover;display:block;}
+  .service-media{aspect-ratio:4/3;overflow:hidden;}
+  .service-media img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    cursor:zoom-in;
+    transition:transform .5s ease;
+  }
+  .service-card:hover .service-media img{transform:scale(1.08);}
+  @media (prefers-reduced-motion: reduce){
+    .service-media img{transition:none;}
+    .service-card:hover .service-media img{transform:none;}
+  }
   .service-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1;}
   .service-body h3{font-size:20px;margin-bottom:8px;}
   .service-body p{font-size:14.5px;flex:1;margin-bottom:16px;}
   .service-body .btn{align-self:flex-start;padding:10px 20px;font-size:13.5px;}
   .service-body .btn-outline{border-color:rgba(43,35,30,0.25);}
+
+  /* ============ BOOKING STEPS ============ */
+  .steps{background:var(--cream);}
+  .steps-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:34px;
+    counter-reset:step;
+  }
+  .step-card{text-align:center;position:relative;padding:0 12px;}
+  .step-num{
+    width:56px;
+    height:56px;
+    margin:0 auto 18px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--serif);
+    font-size:22px;
+    font-weight:600;
+    color:var(--white);
+    background:linear-gradient(135deg,var(--rose-gold),var(--mauve));
+    box-shadow:var(--shadow-sm);
+  }
+  .step-card h3{font-size:18.5px;margin-bottom:8px;}
+  .step-card p{font-size:14.5px;max-width:34ch;margin:0 auto;}
+  @media (min-width:820px){
+    .steps-grid{grid-template-columns:repeat(3,1fr);gap:20px;}
+    .step-card{position:relative;}
+    .step-card:not(:last-child)::after{
+      content:'';
+      position:absolute;
+      top:28px;
+      left:calc(50% + 46px);
+      right:calc(-50% + 46px);
+      height:1px;
+      background:repeating-linear-gradient(90deg, var(--rose-gold) 0 6px, transparent 6px 12px);
+      opacity:.6;
+    }
+  }
 
   /* ============ GALLERY ============ */
   .gallery{background:var(--white);}
@@ -517,7 +586,7 @@
     border-radius:14px;
     flex-shrink:0;
   }
-  .gallery-item img{border-radius:14px;width:100%;height:100%;object-fit:cover;}
+  .gallery-item img{border-radius:14px;width:100%;height:100%;object-fit:cover;cursor:zoom-in;}
   @keyframes gallery-scroll{
     from{transform:translateX(0);}
     to{transform:translateX(-50%);}
@@ -571,6 +640,41 @@
     text-transform:uppercase;
     letter-spacing:.5px;
   }
+
+  /* ============ FAQ ============ */
+  .faq{background:var(--white);}
+  .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px;}
+  .faq-item{
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  .faq-item summary{
+    list-style:none;
+    cursor:pointer;
+    padding:18px 50px 18px 22px;
+    position:relative;
+    font-family:var(--serif);
+    font-size:16.5px;
+    font-weight:600;
+    color:var(--deep);
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:'+';
+    position:absolute;
+    right:20px;
+    top:50%;
+    transform:translateY(-50%);
+    font-family:var(--sans);
+    font-size:22px;
+    font-weight:400;
+    color:var(--rose-gold-dark);
+    transition:transform .3s ease;
+  }
+  .faq-item[open] summary::after{transform:translateY(-50%) rotate(45deg);}
+  .faq-item p{padding:0 22px 20px;margin:0;font-size:14.5px;}
 
   /* ============ STRONG CTA ============ */
   .cta-band{
@@ -720,6 +824,49 @@
   .privacy-section p{font-size:14.5px;}
   .privacy-note{font-size:12.5px;color:var(--mauve);}
 
+  /* ============ LIGHTBOX ============ */
+  .lightbox{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px 20px;
+    background:rgba(20,15,12,0.92);
+    opacity:0;
+    transition:opacity .25s ease;
+  }
+  .lightbox[hidden]{display:none;}
+  .lightbox.is-open{opacity:1;}
+  .lightbox img{
+    max-width:100%;
+    max-height:100%;
+    border-radius:10px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
+    transform:scale(.96);
+    transition:transform .25s ease;
+  }
+  .lightbox.is-open img{transform:scale(1);}
+  .lightbox-close{
+    position:absolute;
+    top:18px;
+    right:18px;
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,0.35);
+    background:rgba(255,255,255,0.08);
+    color:#fff;
+    font-size:20px;
+    line-height:1;
+    cursor:pointer;
+  }
+  .lightbox-close:hover{background:rgba(255,255,255,0.18);}
+  @media (prefers-reduced-motion: reduce){
+    .lightbox, .lightbox img{transition:none;}
+  }
+
   /* ============ RESPONSIVE ============ */
   @media (min-width:640px){
     .about-grid{grid-template-columns:1fr 1fr;}
@@ -753,6 +900,7 @@
       <a href="#szolgaltatasok">Szolgáltatások</a>
       <a href="#galeria">Galéria</a>
       <a href="#velemenyek">Vélemények</a>
+      <a href="#gyik">GYIK</a>
       <a href="#kapcsolat">Kapcsolat</a>
     </nav>
     <div class="header-cta">
@@ -782,7 +930,7 @@
       <a class="btn btn-outline on-dark btn-lg" href="tel:+36205148490">Hívj engem</a>
     </div>
     <div class="hero-trust reveal is-visible">
-      <div><strong>955+</strong>elégedett követő Facebookon</div>
+      <div><strong data-countup="955" data-suffix="+">0+</strong>elégedett követő Facebookon</div>
       <div><strong>Börcs</strong>Győr közelében</div>
       <div><strong>Telefonon</strong>gyors időpontfoglalás</div>
     </div>
@@ -890,6 +1038,34 @@
   </div>
 </section>
 
+<!-- ============ BOOKING STEPS ============ -->
+<section class="steps" id="folyamat">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Egyszerű folyamat</p>
+      <h2>Hogyan foglalj időpontot?</h2>
+      <p>Nincs bonyolult online rendszer, nincs regisztráció — mindössze egy hívás választ el az új körmeidtől.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal">
+        <div class="step-num">1</div>
+        <h3>Hívsz</h3>
+        <p>Felhívsz a +36 20 514 8490-es számon, és elmondod, milyen kezelésre gondoltál.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">2</div>
+        <h3>Egyeztetünk időpontot</h3>
+        <p>Közösen megtaláljuk a neked legmegfelelőbb időpontot, az igényeid szerint.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">3</div>
+        <h3>Elkészítem a körmeidet</h3>
+        <p>A megbeszélt időpontban vár a nyugodt, barátságos szalon — és a tökéletes eredmény.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ GALLERY ============ -->
 <section class="gallery" id="galeria">
   <div class="container">
@@ -945,6 +1121,38 @@
         <p class="t-quote">„Mindig csodát alkot! Tökéletes munka, barátságos környezet — kikapcsol és feltölt a körmözés vele.”</p>
         <div class="t-name">Kata H.</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="gyik">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Gyakori kérdések</p>
+      <h2>Amit még jó tudni</h2>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary>Fájdalommentes a benőtt köröm kezelése?</summary>
+        <p>Kíméletes, szakszerű technikával dolgozom, a cél mindig az, hogy a lehető legkevésbé legyen kellemetlen. Ha a körmöd különösen érzékeny vagy már régóta problémás, szólj nyugodtan előre telefonon, és külön odafigyelek rá a kezelés alatt.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Mennyi ideig tart egy műkörömépítés?</summary>
+        <p>A választott technikától és a köröm állapotától függően jellemzően 1–2 órát vesz igénybe. Időpont-egyeztetéskor telefonon pontosítjuk, mennyi időt érdemes rá szánnod.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Mit vigyek magammal az első alkalommal?</summary>
+        <p>Nem kell semmit hoznod, csak magadat — mindent biztosítok a kezeléshez. Ha van kedvenc géllakk-színed vagy inspirációs ötleted, szívesen megnézem és igazodom hozzá.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Hogyan tudom lemondani vagy módosítani az időpontot?</summary>
+        <p>Kérlek, telefonon jelezd a +36 20 514 8490-es számon, lehetőleg minél előbb, hogy más vendégnek is fel tudjam ajánlani az időpontot.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Hol található a szalon?</summary>
+        <p>Börcsön várlak, Győr közelében. A pontos útvonalat a Kapcsolat menüpontban található térképen is megtalálod, illetve telefonos egyeztetéskor szívesen elmagyarázom.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -1034,6 +1242,12 @@
   <a class="btn btn-primary" href="tel:+36205148490">📞 Hívás / Időpontfoglalás</a>
 </div>
 
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Kép nagyítva">
+  <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Bezárás">✕</button>
+  <img src="" alt="" id="lightboxImg">
+</div>
+
 <!-- ============ COOKIE BANNER ============ -->
 <div class="cookie-banner" id="cookieBanner" hidden role="dialog" aria-live="polite" aria-label="Süti tájékoztató">
   <p>Ez a weboldal a térkép megjelenítéséhez a Google Térkép beágyazott szolgáltatását használja, amely sütiket helyezhet el. Bővebben az <a href="#adatvedelem">Adatvédelmi tájékoztatóban</a>.</p>
@@ -1073,6 +1287,92 @@
     document.addEventListener('keydown', function(e){
       if(e.key === 'Escape') closeNav();
     });
+  })();
+
+  // kép-lightbox — a szolgáltatás- és galéria-képekre kattintva nagyítva mutatja
+  (function(){
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightboxImg');
+    var closeBtn = document.getElementById('lightboxClose');
+    if(!lightbox || !lightboxImg || !closeBtn) return;
+    var triggers = document.querySelectorAll('.service-media img, .gallery-item:not([aria-hidden]) img');
+    function openLightbox(img){
+      lightboxImg.src = img.currentSrc || img.src;
+      lightboxImg.alt = img.alt || '';
+      lightbox.hidden = false;
+      requestAnimationFrame(function(){ lightbox.classList.add('is-open'); });
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(){
+      lightbox.classList.remove('is-open');
+      document.body.style.overflow = '';
+      setTimeout(function(){ lightbox.hidden = true; lightboxImg.src = ''; }, 250);
+    }
+    triggers.forEach(function(img){
+      img.addEventListener('click', function(){ openLightbox(img); });
+    });
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function(e){
+      if(e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && !lightbox.hidden) closeLightbox();
+    });
+  })();
+
+  // pörgő szám-animáció a hero statisztikáknál
+  (function(){
+    var els = document.querySelectorAll('[data-countup]');
+    if(!els.length) return;
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function animate(el){
+      var target = parseInt(el.getAttribute('data-countup'), 10) || 0;
+      var suffix = el.getAttribute('data-suffix') || '';
+      if(reduceMotion){ el.textContent = target + suffix; return; }
+      var start = null;
+      var duration = 1400;
+      function step(ts){
+        if(start === null) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if(progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    if('IntersectionObserver' in window){
+      var cio = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            animate(entry.target);
+            cio.unobserve(entry.target);
+          }
+        });
+      }, {threshold:0.4});
+      els.forEach(function(el){ cio.observe(el); });
+    } else {
+      els.forEach(animate);
+    }
+  })();
+
+  // finom parallax a hero háttérképen
+  (function(){
+    var hero = document.querySelector('.hero');
+    if(!hero) return;
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var ticking = false;
+    function update(){
+      ticking = false;
+      var rect = hero.getBoundingClientRect();
+      if(rect.bottom < 0 || rect.top > window.innerHeight){ return; }
+      var progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+      var offset = (progress - 0.5) * 30; // max ~15px elmozdulás, nagyon visszafogott
+      hero.style.setProperty('--hero-shift', offset.toFixed(1) + 'px');
+    }
+    window.addEventListener('scroll', function(){
+      if(!ticking){ requestAnimationFrame(update); ticking = true; }
+    }, {passive:true});
+    update();
   })();
 
   // süti tájékoztató sáv — az elfogadás/elutasítás választása böngészőnként megjegyzésre kerül
