@@ -148,6 +148,7 @@
     --rose-gold:#C9A27A;
     --rose-gold-dark:#B08553;
     --mauve:#B76E79;
+    --mauve-text:#934954; /* sötétített mauve — WCAG AA kontraszt (4.5:1+) kis feliratokhoz világos hátteren */
     --deep:#2B231E;
     --deep-soft:#4A3C34;
     --accent:#7C4A44;
@@ -197,7 +198,7 @@
     font-size:12.5px;
     letter-spacing:3.5px;
     text-transform:uppercase;
-    color:var(--mauve);
+    color:var(--mauve-text);
     font-weight:600;
     margin-bottom:14px;
   }
@@ -349,7 +350,7 @@
     padding:5px;
   }
   .logo-badge img{width:100%;height:100%;object-fit:contain;display:block;}
-  .logo-text{display:none;line-height:1.2;}
+  .logo-text{display:block;line-height:1.2;}
   .logo-text strong{
     display:block;
     font-family:var(--serif);
@@ -363,12 +364,9 @@
     font-size:10px;
     letter-spacing:.7px;
     text-transform:uppercase;
-    color:var(--mauve);
+    color:var(--mauve-text);
     font-weight:600;
     margin-top:2px;
-  }
-  @media (min-width:640px){
-    .logo-text{display:block;}
   }
   .footer-logo{
     height:84px;
@@ -397,9 +395,10 @@
     box-shadow:0 16px 24px -18px rgba(43,35,30,0.35);
     max-height:0;
     overflow:hidden;
-    transition:max-height .32s ease;
+    visibility:hidden;
+    transition:max-height .32s ease, visibility 0s linear .32s;
   }
-  .main-nav.is-open{max-height:340px;}
+  .main-nav.is-open{max-height:340px;visibility:visible;transition:max-height .32s ease, visibility 0s linear 0s;}
   .main-nav a{
     padding:14px 24px;
     border-bottom:1px solid var(--line);
@@ -410,7 +409,7 @@
     text-decoration:none;
   }
   .main-nav a:last-child{border-bottom:0;}
-  .main-nav a:hover{color:var(--mauve);}
+  .main-nav a:hover{color:var(--mauve-text);}
   .nav-toggle{
     display:flex;
     flex-direction:column;
@@ -443,6 +442,7 @@
       flex-direction:row;
       max-height:none;
       overflow:visible;
+      visibility:visible;
       background:none;
       border:0;
       box-shadow:none;
@@ -550,7 +550,7 @@
     overflow:hidden;
   }
   .about-media img{border-radius:var(--radius);width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;}
-  .about-text .eyebrow{color:var(--mauve);}
+  .about-text .eyebrow{color:var(--mauve-text);}
   .about-text h2{font-size:clamp(26px,4vw,36px);}
   .about-points{
     display:grid;
@@ -715,7 +715,7 @@
     display:inline-block;
     margin-left:8px;
     font-weight:400;
-    color:var(--mauve);
+    color:var(--mauve-text);
     font-size:11px;
     text-transform:uppercase;
     letter-spacing:.5px;
@@ -800,13 +800,13 @@
   .contact-row:first-of-type{border-top:none;}
   .contact-row svg{width:21px;height:21px;color:var(--rose-gold-dark);flex-shrink:0;margin-top:2px;}
   .contact-row a, .contact-row div{font-size:15px;color:var(--deep-soft);font-weight:500;}
-  .contact-row a:hover{color:var(--mauve);}
+  .contact-row a:hover{color:var(--mauve-text);}
   .contact-row .row-label{
     display:block;
     font-size:11.5px;
     text-transform:uppercase;
     letter-spacing:1px;
-    color:var(--mauve);
+    color:var(--mauve-text);
     font-weight:600;
     margin-bottom:3px;
   }
@@ -898,11 +898,12 @@
   }
 
   /* ============ ADATVÉDELEM ============ */
-  .privacy-section{background:var(--white);padding:56px 0;}
+  .privacy-section{background:var(--white);padding:32px 0 56px;}
   .privacy-section .container{max-width:720px;}
-  .privacy-section h2{font-size:24px;}
-  .privacy-section p{font-size:14.5px;}
-  .privacy-note{font-size:12.5px;color:var(--mauve);}
+  .privacy-details summary{font-size:15px;}
+  .privacy-body{padding:0 22px 20px;}
+  .privacy-body p{padding:0;font-size:14px;margin:0 0 12px;}
+  .privacy-body p:last-child{margin-bottom:0;}
 
   /* ============ LIGHTBOX ============ */
   .lightbox{
@@ -1027,7 +1028,7 @@
     <div class="about-text reveal">
       <p class="eyebrow">Rólam</p>
       <h2>Szakértelem, odafigyelés, minőség</h2>
-      <p>Hiba Istvánné Dóri vagyok, és éveken át szerzett tapasztalattal foglalkozom kéz- és lábápolással, valamint műkörömépítéssel. Fontos számomra, hogy minden vendégem igényes, precíz munkát kapjon — és közben jól is érezze magát nálam.</p>
+      <p>Hiba Istvánné Dóri vagyok, és több éve szerzett tapasztalattal foglalkozom kéz- és lábápolással, valamint műkörömépítéssel. Fontos számomra, hogy minden vendégem igényes, precíz munkát kapjon — és közben jól is érezze magát nálam.</p>
       <p>Kellemes, barátságos környezetben, nyugodt tempóban dolgozom — nálam a körmözés és a lábápolás nem csak szakma, hanem kikapcsolódás és feltöltődés is egyben.</p>
       <ul class="about-points">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Több éves tapasztalat</li>
@@ -1291,12 +1292,14 @@
 
 <!-- ============ ADATVÉDELEM ============ -->
 <section class="privacy-section" id="adatvedelem">
-  <div class="container reveal">
-    <p class="eyebrow">Adatvédelem</p>
-    <h2>Adatkezelési tájékoztató</h2>
-    <p>A weboldalon megadott elérhetőségeken (telefon, Facebook) kizárólag időpont-egyeztetés és kapcsolatfelvétel céljából tudsz velem kapcsolatba lépni. A hívás vagy üzenetváltás során megadott adataidat (pl. név, telefonszám) kizárólag a szolgáltatás nyújtásához használom, harmadik félnek nem adom át.</p>
-    <p>Az oldalon látható térkép a Google Térkép beágyazott szolgáltatását használja, amely megtekintéskor sütiket helyezhet el a böngésződben — ezekre a Google saját adatvédelmi szabályzata vonatkozik. A Facebook-gomb a facebook.com/BellissimaGyor oldalra mutat, ahol a Meta saját adatvédelmi irányelvei érvényesek.</p>
-    <p class="privacy-note">Ez a rövid tájékoztató nem minősül teljes körű, jogi szempontból ellenőrzött adatkezelési szabályzatnak — ha ilyenre van szükséged, érdemes szakjogásszal elkészíttetned.</p>
+  <div class="container">
+    <details class="faq-item privacy-details">
+      <summary>Adatkezelési tájékoztató</summary>
+      <div class="privacy-body">
+        <p>A weboldalon megadott elérhetőségeken (telefon, Facebook) kizárólag időpont-egyeztetés és kapcsolatfelvétel céljából tudsz velem kapcsolatba lépni. A hívás vagy üzenetváltás során megadott adataidat (pl. név, telefonszám) kizárólag a szolgáltatás nyújtásához használom, harmadik félnek nem adom át.</p>
+        <p>Az oldalon látható térkép a Google Térkép beágyazott szolgáltatását használja, amely megtekintéskor sütiket helyezhet el a böngésződben — ezekre a Google saját adatvédelmi szabályzata vonatkozik. A Facebook-gomb a facebook.com/BellissimaGyor oldalra mutat, ahol a Meta saját adatvédelmi irányelvei érvényesek.</p>
+      </div>
+    </details>
   </div>
 </section>
 
@@ -1340,6 +1343,18 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // adatvédelmi tájékoztató automatikus kinyitása, ha valaki a lábléc
+  // vagy a sütisáv "Adatvédelem" linkjére kattint (#adatvedelem)
+  (function(){
+    var details = document.querySelector('#adatvedelem .privacy-details');
+    if(!details) return;
+    function openIfLinked(){
+      if(window.location.hash === '#adatvedelem') details.open = true;
+    }
+    openIfLinked();
+    window.addEventListener('hashchange', openIfLinked);
+  })();
 
   // mobil hamburger menü
   (function(){
