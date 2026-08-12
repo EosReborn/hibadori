@@ -34,11 +34,11 @@
 <meta property="og:type" content="business.business">
 <meta property="og:title" content="Dóri Kéz- és Lábápoló és Műkörömépítő">
 <meta property="og:description" content="Kéz- és lábápolás, műkörömépítés, géllakk, pedikűr Börcsön, Győr közelében. Foglalj időpontot telefonon.">
-<meta property="og:image" content="images/placeholder.svg">
+<meta property="og:image" content="images/logo.png">
 <meta property="og:locale" content="hu_HU">
 <meta property="og:url" content="https://www.bellissimagyor.hu/">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232B231E'/%3E%3Ctext x='50' y='66' font-family='Georgia,serif' font-size='52' fill='%23C9A27A' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="images/favicon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,7 +57,7 @@
   "alternateName": "Bellissima Győr",
   "url": "https://www.bellissimagyor.hu/",
   "telephone": "+36205148490",
-  "image": "images/placeholder.svg",
+  "image": "images/logo.png",
   "priceRange": "$$",
   "address": {
     "@type": "PostalAddress",
@@ -245,6 +245,17 @@
     color:var(--deep);
   }
   .logo span{color:var(--mauve);}
+  .logo-img{height:46px;width:auto;display:block;}
+  .footer-logo{
+    height:84px;
+    width:auto;
+    display:block;
+    margin:0 auto 14px;
+    border-radius:50%;
+    background:#fff;
+    padding:6px;
+    box-shadow:0 10px 30px -12px rgba(0,0,0,0.45);
+  }
   .header-cta{display:flex;align-items:center;gap:10px;}
   .header-cta .btn{padding:11px 20px;font-size:14px;}
   .header-cta .btn-outline{display:none;}
@@ -258,7 +269,7 @@
     color:#fff;
     background:
       linear-gradient(180deg, rgba(30,22,18,0.55) 0%, rgba(30,22,18,0.72) 55%, rgba(20,15,12,0.88) 100%),
-      url('images/placeholder.svg') center/cover no-repeat;
+      url('images/hero.jpg') center 30%/cover no-repeat;
   }
   .hero-badge{
     position:absolute;
@@ -596,7 +607,7 @@
 <!-- ============ HEADER ============ -->
 <header class="site-header">
   <div class="container">
-    <a href="#top" class="logo">Dóri</a>
+    <a href="#top" class="logo"><img src="images/logo.png" alt="Dóri Kéz- és Lábápoló és Műkörömépítő" class="logo-img"></a>
     <div class="header-cta">
       <a class="btn btn-outline" href="https://www.facebook.com/BellissimaGyor" target="_blank" rel="noopener">Facebook</a>
       <a class="btn btn-primary" href="tel:+36205148490">
@@ -609,7 +620,6 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
-  <span class="hero-badge">HERO KÉP HELYE — tölts fel egy nagy, látványos szalon- vagy portréfotót</span>
   <div class="container">
     <p class="eyebrow reveal is-visible">Dóri Kéz- és Lábápoló és Műkörömépítő</p>
     <h1 class="reveal is-visible">Dóri Kéz- és Lábápoló és Műkörömépítő – ahol a szépség és a törődés találkozik</h1>
@@ -844,7 +854,8 @@
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="container">
-    <div class="logo">Dóri Kéz- és Lábápoló és Műkörömépítő</div>
+    <img src="images/logo.png" alt="Dóri Kéz- és Lábápoló és Műkörömépítő" class="footer-logo" loading="lazy">
+    <div class="logo" style="justify-content:center;display:flex;">Dóri Kéz- és Lábápoló és Műkörömépítő</div>
     <p style="margin:0;color:rgba(255,255,255,0.6);">Ahol a szépség és a törődés találkozik.</p>
     <div class="footer-links">
       <a href="tel:+36205148490">Telefon</a>
