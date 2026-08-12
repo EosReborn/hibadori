@@ -3,53 +3,41 @@
   ============================================================================
   BELLISSIMA GYŐR — Landing page sablon
   ============================================================================
-  FONTOS — MIT KELL KICSERÉLNED, MIELŐTT ÉLESBE ÁLL AZ OLDAL:
+  FONTOS — MIT KELL MÉG KICSERÉLNED, MIELŐTT ÉLESBE ÁLL AZ OLDAL:
 
-  1) TELEFONSZÁM — jelenleg "+36 XX XXX XXXX" placeholder szerepel minden
-     hívás-gombban (href="tel:+36XXXXXXXXX"). Keress rá erre a szövegre az
-     egész fájlban, és cseréld le a valós Bellissima Győr telefonszámra.
-     (Kb. 6 helyen fordul elő: hero, szolgáltatás-kártyák, nagy CTA szekció,
-     kapcsolat szekció, mobil sticky gomb, JSON-LD strukturált adat.)
+  A telefonszám (+36 20 514 8490 — a Facebook-oldalon megadott "Bejelentkezés"
+  szám) és a szolgáltatások már a Facebook-oldal (facebook.com/BellissimaGyor,
+  "Hiba Istvánné Dóri Kéz- és Lábápoló és Műkörömépítő") valós adatai alapján
+  szerepelnek. Ami még hátravan:
 
-  2) CÍM — a Kapcsolat szekcióban és a JSON-LD-ben "[CÍM MEGADÁSA SZÜKSÉGES]"
-     jelöli. Cseréld a szalon pontos győri címére.
+  1) CÍM — a Kapcsolat szekcióban és a JSON-LD-ben "[CÍM MEGADÁSA SZÜKSÉGES]"
+     jelöli. A Facebook-oldalon nem szerepelt pontos cím — cseréld a szalon
+     tényleges győri címére.
 
-  3) NYITVATARTÁS — a Kapcsolat szekcióban placeholder táblázat, valós
-     nyitvatartási adatokkal töltendő ki.
+  2) NYITVATARTÁS — a Kapcsolat szekcióban placeholder táblázat, a
+     Facebook-oldalon nem szerepelt nyitvatartás — valós adatokkal töltendő ki.
 
-  4) SZOLGÁLTATÁSOK — a "Szolgáltatások" szekcióban 6 db üres sablonkártya
-     található (data-placeholder="true" jelöléssel). A Facebook-oldalon
-     ténylegesen szereplő szolgáltatások nevével, rövid leírásával és képével
-     kell feltölteni őket — ne maradjon bennük kitalált szolgáltatás.
+  3) KÉPEK — minden kép jelenleg egy elegáns placeholder grafikát mutat
+     (images/placeholder.svg felirattal). A felhasználó jelezte, hogy a
+     valós fotókat (szalon/munkák/hangulat) később küldi — addig is cseréld
+     le a src="..." értékeket, amint megvannak.
 
-  5) KÉPEK — minden kép jelenleg egy elegáns placeholder grafikát mutat
-     (images/placeholder.svg felirattal). Cseréld le a src="..." értékeket
-     valós Bellissima Győr fotókra (szalon, munkák, hangulat, csapat).
-
-  6) VENDÉGVÉLEMÉNYEK — a "Vendégeink véleménye" szekcióban "IDE KERÜL A
-     VENDÉGVÉLEMÉNY" placeholder szöveg + kitalált név helyett valós,
-     nyilvánosan közzétett vélemények és vendégnevek (kezdőbetű is elég)
-     kerüljenek be.
-
-  7) FACEBOOK LINK — ez már a ténylegesen megadott,
-     https://www.facebook.com/BellissimaGyor cím, ez nem placeholder.
-
-  Kereshető jelölés a fájlban minden helyen: "TÖLTSD KI" / "MEGADÁSA SZÜKSÉGES"
+  Kereshető jelölés a fájlban: "MEGADÁSA SZÜKSÉGES"
   ============================================================================
 -->
 <html lang="hu">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Bellissima Győr | Szépségszalon – Időpontfoglalás telefonon</title>
-<meta name="description" content="Bellissima Győr – ahol a szépség és a törődés találkozik. Foglalj időpontot telefonon, és tapasztald meg a személyre szabott, prémium szépségápolást Győrben.">
+<title>Bellissima Győr | Kéz- és Lábápolás, Műköröm – Időpontfoglalás telefonon</title>
+<meta name="description" content="Bellissima Győr – kéz- és lábápolás, műkörömépítés, géllakk és esztétikai pedikűr Győrben, Hiba Istvánné Dóri szakértő kezei között. Foglalj időpontot telefonon.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.bellissimagyor.hu/">
 
 <!-- Open Graph -->
 <meta property="og:type" content="business.business">
-<meta property="og:title" content="Bellissima Győr | Szépségszalon">
-<meta property="og:description" content="Ahol a szépség és a törődés találkozik. Foglalj időpontot telefonon.">
+<meta property="og:title" content="Bellissima Győr | Kéz- és Lábápolás, Műköröm">
+<meta property="og:description" content="Kéz- és lábápolás, műkörömépítés, géllakk, pedikűr Győrben. Foglalj időpontot telefonon.">
 <meta property="og:image" content="images/placeholder.svg">
 <meta property="og:locale" content="hu_HU">
 <meta property="og:url" content="https://www.bellissimagyor.hu/">
@@ -68,10 +56,10 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "BeautySalon",
+  "@type": "NailSalon",
   "name": "Bellissima Győr",
   "url": "https://www.bellissimagyor.hu/",
-  "telephone": "+36XXXXXXXXX",
+  "telephone": "+36205148490",
   "image": "images/placeholder.svg",
   "priceRange": "$$",
   "address": {
@@ -411,6 +399,15 @@
     position:relative;
   }
   .t-stars{color:var(--rose-gold-dark);font-size:15px;letter-spacing:2px;margin-bottom:12px;}
+  .t-badge{
+    display:inline-block;
+    font-size:11px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--rose-gold-dark);
+    margin-bottom:12px;
+  }
   .t-quote{
     font-family:var(--serif);
     font-style:italic;
@@ -557,7 +554,7 @@
     <a href="#top" class="logo">Bellissima <span>Győr</span></a>
     <div class="header-cta">
       <a class="btn btn-outline" href="https://www.facebook.com/BellissimaGyor" target="_blank" rel="noopener">Facebook</a>
-      <a class="btn btn-primary" href="tel:+36XXXXXXXXX">
+      <a class="btn btn-primary" href="tel:+36205148490">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         Hívás
       </a>
@@ -571,16 +568,16 @@
   <div class="container">
     <p class="eyebrow reveal is-visible">Bellissima Győr</p>
     <h1 class="reveal is-visible">Bellissima Győr – ahol a szépség és a törődés találkozik</h1>
-    <p class="lead reveal is-visible">Személyre szabott, igényes szépségápolás Győr szívében. Szakértő kezekben, kellemes, nőies környezetben — foglalj időpontot most, egyetlen hívással.</p>
+    <p class="lead reveal is-visible">Igényes kéz- és lábápolás, műkörömépítés és pedikűr Győrben, Hiba Istvánné Dóri szakértő kezei között. Nyugodt, barátságos környezetben — foglalj időpontot most, egyetlen hívással.</p>
     <div class="hero-actions reveal is-visible">
-      <a class="btn btn-primary btn-lg" href="tel:+36XXXXXXXXX">
+      <a class="btn btn-primary btn-lg" href="tel:+36205148490">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         Időpontot kérek
       </a>
-      <a class="btn btn-outline on-dark btn-lg" href="tel:+36XXXXXXXXX">Hívj minket</a>
+      <a class="btn btn-outline on-dark btn-lg" href="tel:+36205148490">Hívj minket</a>
     </div>
     <div class="hero-trust reveal is-visible">
-      <div><strong>Facebook</strong>@BellissimaGyor</div>
+      <div><strong>955+</strong>elégedett követő Facebookon</div>
       <div><strong>Győr</strong>szalonunk otthona</div>
       <div><strong>Telefonon</strong>gyors időpontfoglalás</div>
     </div>
@@ -597,13 +594,13 @@
     <div class="about-text reveal">
       <p class="eyebrow">Rólunk</p>
       <h2>Szakértelem, odafigyelés, minőség</h2>
-      <p>A Bellissima Győr csapata azért van itt, hogy minden vendégünk különlegesnek érezze magát. Szakértő kezekkel, minőségi termékekkel és igazi odafigyeléssel dolgozunk, hogy a hozzánk betérő percek a nap legszebb pillanatai legyenek.</p>
-      <p>Kellemes, nőies környezetben, nyugodt tempóban dolgozunk — nálunk nem sietünk el semmit, mert tudjuk, hogy a szépségápolás egyszerre szakma és önmagunkra szánt idő.</p>
+      <p>A Bellissima Győr mögött Hiba Istvánné Dóri áll, aki éveken át szerzett tapasztalattal foglalkozik kéz- és lábápolással, valamint műkörömépítéssel. Vendégei igényes, precíz munkáról és igazi kézügyességről számolnak be.</p>
+      <p>Kellemes, barátságos környezetben, nyugodt tempóban dolgozunk — nálunk a körmözés és a lábápolás nem csak szakma, hanem kikapcsolódás és feltöltődés is egyben.</p>
       <ul class="about-points">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Tapasztalt szakemberek</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Prémium termékek</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Személyre szabott figyelem</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Nyugodt, elegáns légkör</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Több éves tapasztalat</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Precíz, igényes munka</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Barátságos környezet</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Kíméletes, fájdalommentes kezelés</li>
       </ul>
     </div>
   </div>
@@ -615,80 +612,74 @@
     <div class="section-head reveal">
       <p class="eyebrow">Szolgáltatások</p>
       <h2>Amiben segíthetünk</h2>
-      <p>Az alábbi kártyák helyére a Facebook-oldalon ténylegesen szereplő szolgáltatások kerülnek — kérlek, töltsd fel valós tartalommal.</p>
+      <p>Kéz- és lábápolás, műkörömépítés és pedikűr — az alábbi szolgáltatásokkal várunk Győrben.</p>
     </div>
     <div class="service-grid">
-      <!-- 6 db placeholder szolgáltatás-kártya — TÖLTSD KI valós adatokkal -->
+      <!-- A Facebook-oldalon (facebook.com/BellissimaGyor) ténylegesen szereplő szolgáltatások -->
       <article class="service-card reveal">
         <div class="service-media ph-media">
-          <img src="images/placeholder.svg" alt="Szolgáltatás képe" loading="lazy" width="800" height="600">
-          <span class="ph-label">Kép helye</span>
+          <img src="images/placeholder.svg" alt="Manikűr" loading="lazy" width="800" height="600">
+          <span class="ph-label">Kép helye — manikűr</span>
         </div>
         <div class="service-body">
-          <span class="ph-tag">Töltsd ki</span>
-          <h3>Szolgáltatás neve #1</h3>
-          <p>Ide kerül a szolgáltatás rövid, 1–2 mondatos leírása a Facebook-oldal alapján.</p>
-          <a class="btn btn-outline" href="tel:+36XXXXXXXXX">Időpontot kérek</a>
+          <h3>Manikűr</h3>
+          <p>Ápolt, szép kezek mindennapokra és különleges alkalmakra, gondos, precíz kivitelezéssel.</p>
+          <a class="btn btn-outline" href="tel:+36205148490">Időpontot kérek</a>
         </div>
       </article>
       <article class="service-card reveal">
         <div class="service-media ph-media">
-          <img src="images/placeholder.svg" alt="Szolgáltatás képe" loading="lazy" width="800" height="600">
-          <span class="ph-label">Kép helye</span>
+          <img src="images/placeholder.svg" alt="Zselés és porcelán műkörömépítés" loading="lazy" width="800" height="600">
+          <span class="ph-label">Kép helye — műkörömépítés</span>
         </div>
         <div class="service-body">
-          <span class="ph-tag">Töltsd ki</span>
-          <h3>Szolgáltatás neve #2</h3>
-          <p>Ide kerül a szolgáltatás rövid, 1–2 mondatos leírása a Facebook-oldal alapján.</p>
-          <a class="btn btn-outline" href="tel:+36XXXXXXXXX">Időpontot kérek</a>
+          <h3>Zselés és porcelán műkörömépítés</h3>
+          <p>Tartós, igényes műköröm zselés vagy porcelán technikával, egyéni igények szerint.</p>
+          <a class="btn btn-outline" href="tel:+36205148490">Időpontot kérek</a>
         </div>
       </article>
       <article class="service-card reveal">
         <div class="service-media ph-media">
-          <img src="images/placeholder.svg" alt="Szolgáltatás képe" loading="lazy" width="800" height="600">
-          <span class="ph-label">Kép helye</span>
+          <img src="images/placeholder.svg" alt="Géllakk" loading="lazy" width="800" height="600">
+          <span class="ph-label">Kép helye — géllakk</span>
         </div>
         <div class="service-body">
-          <span class="ph-tag">Töltsd ki</span>
-          <h3>Szolgáltatás neve #3</h3>
-          <p>Ide kerül a szolgáltatás rövid, 1–2 mondatos leírása a Facebook-oldal alapján.</p>
-          <a class="btn btn-outline" href="tel:+36XXXXXXXXX">Érdeklődöm</a>
+          <h3>Géllakk</h3>
+          <p>Hosszan tartó, ragyogó géllakkozás — ápolt, szép kéz akár heteken át.</p>
+          <a class="btn btn-outline" href="tel:+36205148490">Érdeklődöm</a>
         </div>
       </article>
       <article class="service-card reveal">
         <div class="service-media ph-media">
-          <img src="images/placeholder.svg" alt="Szolgáltatás képe" loading="lazy" width="800" height="600">
-          <span class="ph-label">Kép helye</span>
+          <img src="images/placeholder.svg" alt="Esztétikai pedikűr" loading="lazy" width="800" height="600">
+          <span class="ph-label">Kép helye — pedikűr</span>
         </div>
         <div class="service-body">
-          <span class="ph-tag">Töltsd ki</span>
-          <h3>Szolgáltatás neve #4</h3>
-          <p>Ide kerül a szolgáltatás rövid, 1–2 mondatos leírása a Facebook-oldal alapján.</p>
-          <a class="btn btn-outline" href="tel:+36XXXXXXXXX">Érdeklődöm</a>
+          <h3>Esztétikai pedikűr</h3>
+          <p>Szép, ápolt lábak kíméletes, szakszerű pedikűrrel.</p>
+          <a class="btn btn-outline" href="tel:+36205148490">Időpontot kérek</a>
         </div>
       </article>
       <article class="service-card reveal">
         <div class="service-media ph-media">
-          <img src="images/placeholder.svg" alt="Szolgáltatás képe" loading="lazy" width="800" height="600">
-          <span class="ph-label">Kép helye</span>
+          <img src="images/placeholder.svg" alt="Benőtt köröm kezelése" loading="lazy" width="800" height="600">
+          <span class="ph-label">Kép helye — lábápolás</span>
         </div>
         <div class="service-body">
-          <span class="ph-tag">Töltsd ki</span>
-          <h3>Szolgáltatás neve #5</h3>
-          <p>Ide kerül a szolgáltatás rövid, 1–2 mondatos leírása a Facebook-oldal alapján.</p>
-          <a class="btn btn-outline" href="tel:+36XXXXXXXXX">Időpontot kérek</a>
+          <h3>Benőtt köröm kezelése</h3>
+          <p>Fájdalommentes, szakszerű megoldás a benőtt köröm problémájára.</p>
+          <a class="btn btn-outline" href="tel:+36205148490">Érdeklődöm</a>
         </div>
       </article>
       <article class="service-card reveal">
         <div class="service-media ph-media">
-          <img src="images/placeholder.svg" alt="Szolgáltatás képe" loading="lazy" width="800" height="600">
-          <span class="ph-label">Kép helye</span>
+          <img src="images/placeholder.svg" alt="Tyúkszem és problémás köröm kezelése" loading="lazy" width="800" height="600">
+          <span class="ph-label">Kép helye — Callux kezelés</span>
         </div>
         <div class="service-body">
-          <span class="ph-tag">Töltsd ki</span>
-          <h3>Szolgáltatás neve #6</h3>
-          <p>Ide kerül a szolgáltatás rövid, 1–2 mondatos leírása a Facebook-oldal alapján.</p>
-          <a class="btn btn-outline" href="tel:+36XXXXXXXXX">Időpontot kérek</a>
+          <h3>Tyúkszem és problémás köröm kezelése</h3>
+          <p>Tyúkszem eltávolítás, gombás és egyéb problémás köröm kezelése Callux technológiával.</p>
+          <a class="btn btn-outline" href="tel:+36205148490">Időpontot kérek</a>
         </div>
       </article>
     </div>
@@ -725,19 +716,19 @@
     </div>
     <div class="t-grid">
       <div class="t-card reveal">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-quote">„IDE KERÜL A VENDÉGVÉLEMÉNY”</p>
-        <div class="t-name">Vendég neve <span>Töltsd ki</span></div>
+        <div class="t-badge">Facebook ajánlás</div>
+        <p class="t-quote">„Igényes, szép munkát végez. Kézügyessége nagyon szuper!”</p>
+        <div class="t-name">Pékné Farkas Csilla</div>
       </div>
       <div class="t-card reveal">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-quote">„IDE KERÜL A VENDÉGVÉLEMÉNY”</p>
-        <div class="t-name">Vendég neve <span>Töltsd ki</span></div>
+        <div class="t-badge">Facebook ajánlás</div>
+        <p class="t-quote">„Elfogadható árkategória és precíz munka.”</p>
+        <div class="t-name">Knoll Vivien</div>
       </div>
       <div class="t-card reveal">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-quote">„IDE KERÜL A VENDÉGVÉLEMÉNY”</p>
-        <div class="t-name">Vendég neve <span>Töltsd ki</span></div>
+        <div class="t-badge">Facebook ajánlás</div>
+        <p class="t-quote">„Mindig csodát alkot! Tökéletes munka, barátságos környezet — kikapcsol és feltölt a körmözés vele.”</p>
+        <div class="t-name">Hüse Kata</div>
       </div>
     </div>
   </div>
@@ -749,8 +740,8 @@
     <p class="eyebrow">Foglalj most</p>
     <h2>Szeretnél időpontot?</h2>
     <p>Hívj minket, és segítünk megtalálni a számodra megfelelő időpontot.</p>
-    <a class="btn btn-primary btn-lg" href="tel:+36XXXXXXXXX">📞 Időpontfoglalás telefonon</a>
-    <span class="cta-phone-number">+36 XX XXX XXXX — töltsd ki a valós telefonszámmal</span>
+    <a class="btn btn-primary btn-lg" href="tel:+36205148490">📞 Időpontfoglalás telefonon</a>
+    <span class="cta-phone-number">+36 20 514 8490</span>
   </div>
 </section>
 
@@ -763,7 +754,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         <div>
           <span class="row-label">Telefon</span>
-          <a href="tel:+36XXXXXXXXX">+36 XX XXX XXXX (töltsd ki)</a>
+          <a href="tel:+36205148490">+36 20 514 8490</a>
         </div>
       </div>
       <div class="contact-row">
@@ -808,7 +799,7 @@
     <div class="logo">Bellissima Győr</div>
     <p style="margin:0;color:rgba(255,255,255,0.6);">Ahol a szépség és a törődés találkozik.</p>
     <div class="footer-links">
-      <a href="tel:+36XXXXXXXXX">Telefon</a>
+      <a href="tel:+36205148490">Telefon</a>
       <a href="https://www.facebook.com/BellissimaGyor" target="_blank" rel="noopener">Facebook</a>
       <a href="#kapcsolat">Kapcsolat</a>
     </div>
@@ -819,7 +810,7 @@
 <!-- ============ STICKY MOBILE CTA ============ -->
 <div class="sticky-cta">
   <a class="btn btn-outline" href="https://www.facebook.com/BellissimaGyor" target="_blank" rel="noopener">Facebook</a>
-  <a class="btn btn-primary" href="tel:+36XXXXXXXXX">📞 Hívás / Időpontfoglalás</a>
+  <a class="btn btn-primary" href="tel:+36205148490">📞 Hívás / Időpontfoglalás</a>
 </div>
 
 <script>
