@@ -26,14 +26,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Dóri Kéz- és Lábápoló és Műkörömépítő | Időpontfoglalás telefonon</title>
-<meta name="description" content="Dóri Kéz- és Lábápoló és Műkörömépítő – kéz- és lábápolás, műkörömépítés, géllakk és esztétikai pedikűr Győrben és Börcsön. Foglalj időpontot telefonon.">
+<meta name="description" content="Dóri Kéz- és Lábápoló és Műkörömépítő – kéz- és lábápolás, műkörömépítés, géllakk és esztétikai pedikűr Börcsön, Győr közelében. Foglalj időpontot telefonon.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.bellissimagyor.hu/">
 
 <!-- Open Graph -->
 <meta property="og:type" content="business.business">
 <meta property="og:title" content="Dóri Kéz- és Lábápoló és Műkörömépítő">
-<meta property="og:description" content="Kéz- és lábápolás, műkörömépítés, géllakk, pedikűr Győrben. Foglalj időpontot telefonon.">
+<meta property="og:description" content="Kéz- és lábápolás, műkörömépítés, géllakk, pedikűr Börcsön, Győr közelében. Foglalj időpontot telefonon.">
 <meta property="og:image" content="images/placeholder.svg">
 <meta property="og:locale" content="hu_HU">
 <meta property="og:url" content="https://www.bellissimagyor.hu/">
@@ -523,6 +523,54 @@
     .sticky-cta{display:none;}
   }
 
+  /* ============ COOKIE BANNER ============ */
+  .cookie-banner{
+    position:fixed;
+    left:14px;right:14px;
+    bottom:14px;
+    z-index:95;
+    background:var(--deep);
+    color:rgba(255,255,255,0.92);
+    border-radius:16px;
+    padding:18px 20px;
+    box-shadow:var(--shadow);
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    align-items:center;
+    justify-content:space-between;
+    transition:transform .4s ease, opacity .4s ease;
+  }
+  .cookie-banner[hidden]{display:flex;transform:translateY(160%);opacity:0;pointer-events:none;}
+  .cookie-banner p{margin:0;color:rgba(255,255,255,0.82);flex:1 1 260px;font-size:13.5px;line-height:1.6;}
+  .cookie-banner a{color:var(--rose-gold);text-decoration:underline;}
+  .cookie-actions{display:flex;gap:10px;flex-shrink:0;}
+  .cookie-actions button{
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:13px;
+    padding:10px 18px;
+    border-radius:999px;
+    cursor:pointer;
+    border:1px solid rgba(255,255,255,0.35);
+    background:transparent;
+    color:#fff;
+  }
+  .cookie-actions button.accept{
+    background:linear-gradient(135deg,var(--rose-gold),var(--mauve));
+    border-color:transparent;
+  }
+  @media (max-width:899px){
+    .cookie-banner{bottom:80px;}
+  }
+
+  /* ============ ADATVÉDELEM ============ */
+  .privacy-section{background:var(--white);padding:56px 0;}
+  .privacy-section .container{max-width:720px;}
+  .privacy-section h2{font-size:24px;}
+  .privacy-section p{font-size:14.5px;}
+  .privacy-note{font-size:12.5px;color:var(--mauve);}
+
   /* ============ RESPONSIVE ============ */
   @media (min-width:640px){
     .about-grid{grid-template-columns:1fr 1fr;}
@@ -565,7 +613,7 @@
   <div class="container">
     <p class="eyebrow reveal is-visible">Dóri Kéz- és Lábápoló és Műkörömépítő</p>
     <h1 class="reveal is-visible">Dóri Kéz- és Lábápoló és Műkörömépítő – ahol a szépség és a törődés találkozik</h1>
-    <p class="lead reveal is-visible">Igényes kéz- és lábápolás, műkörömépítés és pedikűr Győrben, Hiba Istvánné Dóri szakértő kezei között. Nyugodt, barátságos környezetben — foglalj időpontot most, egyetlen hívással.</p>
+    <p class="lead reveal is-visible">Igényes kéz- és lábápolás, műkörömépítés és pedikűr Börcsön, Győr közelében, Hiba Istvánné Dóri szakértő kezei között. Nyugodt, barátságos környezetben — foglalj időpontot most, egyetlen hívással.</p>
     <div class="hero-actions reveal is-visible">
       <a class="btn btn-primary btn-lg" href="tel:+36205148490">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -575,7 +623,7 @@
     </div>
     <div class="hero-trust reveal is-visible">
       <div><strong>955+</strong>elégedett követő Facebookon</div>
-      <div><strong>Győr</strong>és Börcs környéke</div>
+      <div><strong>Börcs</strong>Győr közelében</div>
       <div><strong>Telefonon</strong>gyors időpontfoglalás</div>
     </div>
   </div>
@@ -609,7 +657,7 @@
     <div class="section-head reveal">
       <p class="eyebrow">Szolgáltatások</p>
       <h2>Amiben segíthetek</h2>
-      <p>Kéz- és lábápolás, műkörömépítés és pedikűr — ezekkel a szolgáltatásokkal várlak Győrben és Börcsön.</p>
+      <p>Kéz- és lábápolás, műkörömépítés és pedikűr — ezekkel a szolgáltatásokkal várlak Börcsön, Győr közelében.</p>
     </div>
     <div class="service-grid">
       <!-- A Facebook-oldalon (facebook.com/BellissimaGyor) ténylegesen szereplő szolgáltatások -->
@@ -782,6 +830,17 @@
   </div>
 </section>
 
+<!-- ============ ADATVÉDELEM ============ -->
+<section class="privacy-section" id="adatvedelem">
+  <div class="container reveal">
+    <p class="eyebrow">Adatvédelem</p>
+    <h2>Adatkezelési tájékoztató</h2>
+    <p>A weboldalon megadott elérhetőségeken (telefon, Facebook) kizárólag időpont-egyeztetés és kapcsolatfelvétel céljából tudsz velem kapcsolatba lépni. A hívás vagy üzenetváltás során megadott adataidat (pl. név, telefonszám) kizárólag a szolgáltatás nyújtásához használom, harmadik félnek nem adom át.</p>
+    <p>Az oldalon látható térkép a Google Térkép beágyazott szolgáltatását használja, amely megtekintéskor sütiket helyezhet el a böngésződben — ezekre a Google saját adatvédelmi szabályzata vonatkozik. A Facebook-gomb a facebook.com/BellissimaGyor oldalra mutat, ahol a Meta saját adatvédelmi irányelvei érvényesek.</p>
+    <p class="privacy-note">Ez a rövid tájékoztató nem minősül teljes körű, jogi szempontból ellenőrzött adatkezelési szabályzatnak — ha ilyenre van szükséged, érdemes szakjogásszal elkészíttetned.</p>
+  </div>
+</section>
+
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="container">
@@ -791,8 +850,10 @@
       <a href="tel:+36205148490">Telefon</a>
       <a href="https://www.facebook.com/BellissimaGyor" target="_blank" rel="noopener">Facebook</a>
       <a href="#kapcsolat">Kapcsolat</a>
+      <a href="#adatvedelem">Adatvédelem</a>
     </div>
     <p style="margin-top:10px;color:rgba(255,255,255,0.45);font-size:12.5px;">&copy; <span id="year"></span> Dóri Kéz- és Lábápoló és Műkörömépítő. Minden jog fenntartva.</p>
+    <p style="margin-top:6px;color:rgba(255,255,255,0.35);font-size:12px;">Készítette: <a href="https://kochdigitalstudio.hu" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.55);">kochdigitalstudio.hu</a></p>
   </div>
 </footer>
 
@@ -802,8 +863,39 @@
   <a class="btn btn-primary" href="tel:+36205148490">📞 Hívás / Időpontfoglalás</a>
 </div>
 
+<!-- ============ COOKIE BANNER ============ -->
+<div class="cookie-banner" id="cookieBanner" hidden role="dialog" aria-live="polite" aria-label="Süti tájékoztató">
+  <p>Ez a weboldal a térkép megjelenítéséhez a Google Térkép beágyazott szolgáltatását használja, amely sütiket helyezhet el. Bővebben az <a href="#adatvedelem">Adatvédelmi tájékoztatóban</a>.</p>
+  <div class="cookie-actions">
+    <button type="button" id="cookieDecline">Elutasítom</button>
+    <button type="button" id="cookieAccept" class="accept">Elfogadom</button>
+  </div>
+</div>
+
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // süti tájékoztató sáv — az elfogadás/elutasítás választása böngészőnként megjegyzésre kerül
+  (function(){
+    try{
+      var KEY = 'bellissimaCookieConsent';
+      var banner = document.getElementById('cookieBanner');
+      if(!banner) return;
+      if(!localStorage.getItem(KEY)){
+        banner.hidden = false;
+      }
+      var accept = document.getElementById('cookieAccept');
+      var decline = document.getElementById('cookieDecline');
+      if(accept) accept.addEventListener('click', function(){
+        localStorage.setItem(KEY, 'accepted');
+        banner.hidden = true;
+      });
+      if(decline) decline.addEventListener('click', function(){
+        localStorage.setItem(KEY, 'declined');
+        banner.hidden = true;
+      });
+    }catch(e){ /* a localStorage nem elérhető — a sáv marad rejtve */ }
+  })();
 
   // scroll reveal
   var revealEls = document.querySelectorAll('.reveal:not(.is-visible)');
