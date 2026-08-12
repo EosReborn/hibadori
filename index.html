@@ -17,6 +17,12 @@
   illusztrációi egyelőre ingyenesen felhasználható stockfotók — ezeket
   érdemes később saját fotókra cserélni.
 
+  SEO — FONTOS: a <link rel="canonical">, az og:url/og:image és a
+  JSON-LD "url" mezője jelenleg a https://www.bellissimagyor.hu/
+  helyőrző domaint használja. Amint megvan a végleges domain,
+  MINDENKÉPP cseréld le ezeket (és a mellékelt robots.txt / sitemap.xml
+  fájlokban is), különben a keresőmotorok téves URL-t indexelhetnek.
+
   ============================================================================
 -->
 <html lang="hu">
@@ -27,14 +33,24 @@
 <meta name="description" content="Dóri Kéz- és Lábápoló és Műkörömépítő – kéz- és lábápolás, műkörömépítés, géllakk és esztétikai pedikűr Börcsön, Győr közelében. Foglalj időpontot telefonon.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.bellissimagyor.hu/">
+<meta name="theme-color" content="#C9A27A">
 
 <!-- Open Graph -->
 <meta property="og:type" content="business.business">
 <meta property="og:title" content="Dóri Kéz- és Lábápoló és Műkörömépítő">
 <meta property="og:description" content="Kéz- és lábápolás, műkörömépítés, géllakk, pedikűr Börcsön, Győr közelében. Foglalj időpontot telefonon.">
-<meta property="og:image" content="images/logo.png">
+<meta property="og:image" content="https://www.bellissimagyor.hu/images/logo.png">
+<meta property="og:image:width" content="480">
+<meta property="og:image:height" content="384">
+<meta property="og:image:alt" content="Dóri Kéz- és Lábápoló és Műkörömépítő logója">
 <meta property="og:locale" content="hu_HU">
 <meta property="og:url" content="https://www.bellissimagyor.hu/">
+
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dóri Kéz- és Lábápoló és Műkörömépítő">
+<meta name="twitter:description" content="Kéz- és lábápolás, műkörömépítés, géllakk, pedikűr Börcsön, Győr közelében. Foglalj időpontot telefonon.">
+<meta name="twitter:image" content="https://www.bellissimagyor.hu/images/logo.png">
 
 <link rel="icon" type="image/png" href="images/favicon.png">
 
@@ -57,14 +73,69 @@
   "telephone": "+36205148490",
   "image": "images/logo.png",
   "priceRange": "$$",
+  "inLanguage": "hu",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Börcs",
     "postalCode": "9152",
     "addressCountry": "HU"
   },
+  "areaServed": [
+    {"@type": "Place", "name": "Börcs"},
+    {"@type": "Place", "name": "Győr"}
+  ],
   "sameAs": [
     "https://www.facebook.com/BellissimaGyor"
+  ]
+}
+</script>
+
+<!-- FAQPage strukturált adat — a GYIK szekcióval megegyező kérdés-válaszokkal -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Fájdalommentes a benőtt köröm kezelése?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kíméletes, szakszerű technikával dolgozom, a cél mindig az, hogy a lehető legkevésbé legyen kellemetlen. Ha a körmöd különösen érzékeny vagy már régóta problémás, szólj nyugodtan előre telefonon, és külön odafigyelek rá a kezelés alatt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mennyi ideig tart egy műkörömépítés?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A választott technikától és a köröm állapotától függően jellemzően 1–2 órát vesz igénybe. Időpont-egyeztetéskor telefonon pontosítjuk, mennyi időt érdemes rá szánnod."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mit vigyek magammal az első alkalommal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nem kell semmit hoznod, csak magadat — mindent biztosítok a kezeléshez. Ha van kedvenc géllakk-színed vagy inspirációs ötleted, szívesen megnézem és igazodom hozzá."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hogyan tudom lemondani vagy módosítani az időpontot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kérlek, telefonon jelezd a +36 20 514 8490-es számon, lehetőleg minél előbb, hogy más vendégnek is fel tudjam ajánlani az időpontot."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hol található a vállalkozás?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Börcsön várlak, Győr közelében. A pontos útvonalat a weboldal Kapcsolat részében található térképen is megtalálod, illetve telefonos egyeztetéskor szívesen elmagyarázom."
+      }
+    }
   ]
 }
 </script>
@@ -579,7 +650,6 @@
     width:max-content;
     animation:gallery-scroll 34s linear infinite;
   }
-  .gallery-track-wrap:hover .gallery-track{animation-play-state:paused;}
   .gallery-item{
     height:100%;
     aspect-ratio:4/5;
@@ -1150,7 +1220,7 @@
         <p>Kérlek, telefonon jelezd a +36 20 514 8490-es számon, lehetőleg minél előbb, hogy más vendégnek is fel tudjam ajánlani az időpontot.</p>
       </details>
       <details class="faq-item">
-        <summary>Hol található a szalon?</summary>
+        <summary>Hol található a vállalkozás?</summary>
         <p>Börcsön várlak, Győr közelében. A pontos útvonalat a Kapcsolat menüpontban található térképen is megtalálod, illetve telefonos egyeztetéskor szívesen elmagyarázom.</p>
       </details>
     </div>
