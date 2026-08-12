@@ -471,11 +471,21 @@
     display:flex;
     align-items:center;
     color:#fff;
-    --hero-shift:0px;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;
+    top:-8%;
+    left:0;
+    right:0;
+    height:116%;
     background:
       linear-gradient(180deg, rgba(30,22,18,0.55) 0%, rgba(30,22,18,0.72) 55%, rgba(20,15,12,0.88) 100%),
-      url('images/hero.jpg') center calc(30% + var(--hero-shift)) / cover no-repeat;
+      url('images/hero.jpg') center 30% / cover no-repeat;
+    transform:translate3d(0,0,0);
+    will-change:transform;
   }
+  .hero .container{position:relative;z-index:1;}
   .hero-badge{
     position:absolute;
     top:14px;
@@ -988,6 +998,7 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
   <div class="container">
     <p class="eyebrow reveal is-visible">Dóri Kéz- és Lábápoló és Műkörömépítő</p>
     <h1 class="reveal is-visible">Dóri Kéz- és Lábápoló és Műkörömépítő – ahol a szépség és a törődés találkozik</h1>
@@ -1014,7 +1025,7 @@
       <img src="images/dori-portre.jpg" alt="Hiba Istvánné Dóri" loading="lazy" width="1023" height="1036">
     </div>
     <div class="about-text reveal">
-      <p class="eyebrow">Rólunk</p>
+      <p class="eyebrow">Rólam</p>
       <h2>Szakértelem, odafigyelés, minőség</h2>
       <p>Hiba Istvánné Dóri vagyok, és éveken át szerzett tapasztalattal foglalkozom kéz- és lábápolással, valamint műkörömépítéssel. Fontos számomra, hogy minden vendégem igényes, precíz munkát kapjon — és közben jól is érezze magát nálam.</p>
       <p>Kellemes, barátságos környezetben, nyugodt tempóban dolgozom — nálam a körmözés és a lábápolás nem csak szakma, hanem kikapcsolódás és feltöltődés is egyben.</p>
@@ -1425,10 +1436,13 @@
     }
   })();
 
-  // finom parallax a hero háttérképen
+  // finom parallax a hero háttérképen — GPU-gyorsított transform,
+  // NEM background-position (az minden képkockán újrafestette a képet,
+  // ez okozta a "remegést" webes nézetben)
   (function(){
     var hero = document.querySelector('.hero');
-    if(!hero) return;
+    var heroBg = document.querySelector('.hero-bg');
+    if(!hero || !heroBg) return;
     if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var ticking = false;
     function update(){
@@ -1437,7 +1451,7 @@
       if(rect.bottom < 0 || rect.top > window.innerHeight){ return; }
       var progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
       var offset = (progress - 0.5) * 30; // max ~15px elmozdulás, nagyon visszafogott
-      hero.style.setProperty('--hero-shift', offset.toFixed(1) + 'px');
+      heroBg.style.transform = 'translate3d(0,' + offset.toFixed(1) + 'px,0)';
     }
     window.addEventListener('scroll', function(){
       if(!ticking){ requestAnimationFrame(update); ticking = true; }
