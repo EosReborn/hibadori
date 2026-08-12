@@ -229,6 +229,7 @@
     border-bottom:1px solid var(--line);
   }
   .site-header .container{
+    position:relative;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -293,6 +294,86 @@
   .header-cta{display:flex;align-items:center;gap:10px;}
   .header-cta .btn{padding:11px 20px;font-size:14px;}
   .header-cta .btn-outline{display:none;}
+
+  /* ---- nav (desktop links + mobile hamburger dropdown) ---- */
+  .main-nav{
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    display:flex;
+    flex-direction:column;
+    background:#fbf6f1;
+    border-bottom:1px solid var(--line);
+    box-shadow:0 16px 24px -18px rgba(43,35,30,0.35);
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .32s ease;
+  }
+  .main-nav.is-open{max-height:340px;}
+  .main-nav a{
+    padding:14px 24px;
+    border-bottom:1px solid var(--line);
+    font-family:var(--sans);
+    font-size:15px;
+    font-weight:600;
+    color:var(--deep);
+    text-decoration:none;
+  }
+  .main-nav a:last-child{border-bottom:0;}
+  .main-nav a:hover{color:var(--mauve);}
+  .nav-toggle{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:5px;
+    width:40px;
+    height:40px;
+    flex-shrink:0;
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:#fff;
+    cursor:pointer;
+    padding:0;
+  }
+  .nav-toggle span{
+    display:block;
+    width:18px;
+    height:2px;
+    border-radius:2px;
+    background:var(--deep);
+    transition:transform .25s ease, opacity .25s ease;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  @media (min-width:900px){
+    .main-nav{
+      position:static;
+      flex-direction:row;
+      max-height:none;
+      overflow:visible;
+      background:none;
+      border:0;
+      box-shadow:none;
+      margin:0 20px;
+      gap:26px;
+    }
+    .main-nav a{padding:4px 0;border:0;position:relative;}
+    .main-nav a::after{
+      content:'';
+      position:absolute;
+      left:0;right:0;bottom:-4px;
+      height:2px;
+      background:var(--rose-gold);
+      transform:scaleX(0);
+      transform-origin:left;
+      transition:transform .25s ease;
+    }
+    .main-nav a:hover::after{transform:scaleX(1);}
+    .nav-toggle{display:none;}
+  }
 
   /* ============ HERO ============ */
   .hero{
@@ -667,12 +748,22 @@
       <span class="logo-badge"><img src="images/logo.png" alt="Dóri Kéz- és Lábápoló és Műkörömépítő logó"></span>
       <span class="logo-text"><strong>Dóri</strong><em>Kéz- és Lábápoló és Műkörömépítő</em></span>
     </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="#rolunk">Rólam</a>
+      <a href="#szolgaltatasok">Szolgáltatások</a>
+      <a href="#galeria">Galéria</a>
+      <a href="#velemenyek">Vélemények</a>
+      <a href="#kapcsolat">Kapcsolat</a>
+    </nav>
     <div class="header-cta">
       <a class="btn btn-outline" href="https://www.facebook.com/BellissimaGyor" target="_blank" rel="noopener">Facebook</a>
       <a class="btn btn-primary" href="tel:+36205148490">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         Hívás
       </a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Menü megnyitása">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </header>
@@ -746,7 +837,7 @@
           <img src="https://images.pexels.com/photos/30294770/pexels-photo-30294770.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Zselés műkörömépítés közelről" loading="lazy" width="900" height="600">
         </div>
         <div class="service-body">
-          <h3>Zselés és porcelán műkörömépítés</h3>
+          <h3>Akril, Zselé porcelán műkörömépítés</h3>
           <p>Tartós, igényes műköröm zselés vagy porcelán technikával, egyéni igények szerint.</p>
           <a class="btn btn-outline" href="tel:+36205148490">Időpontot kérek</a>
         </div>
@@ -836,7 +927,7 @@
   <div class="container">
     <div class="section-head reveal">
       <p class="eyebrow">Vendégeim véleménye</p>
-      <h2>Amit rólunk mondanak</h2>
+      <h2>Amit rólam mondanak</h2>
     </div>
     <div class="t-grid">
       <div class="t-card reveal">
@@ -954,6 +1045,35 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // mobil hamburger menü
+  (function(){
+    var toggle = document.getElementById('navToggle');
+    var nav = document.getElementById('mainNav');
+    if(!toggle || !nav) return;
+    function closeNav(){
+      nav.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+    function openNav(){
+      nav.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+    toggle.addEventListener('click', function(){
+      if(nav.classList.contains('is-open')) closeNav(); else openNav();
+    });
+    nav.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', closeNav);
+    });
+    document.addEventListener('click', function(e){
+      if(!nav.classList.contains('is-open')) return;
+      if(nav.contains(e.target) || toggle.contains(e.target)) return;
+      closeNav();
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') closeNav();
+    });
+  })();
 
   // süti tájékoztató sáv — az elfogadás/elutasítás választása böngészőnként megjegyzésre kerül
   (function(){
