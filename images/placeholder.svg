@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Kép helye">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f4e6dd"/>
+      <stop offset="55%" stop-color="#e8cdbd"/>
+      <stop offset="100%" stop-color="#c9a27a"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c4a44" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#7c4a44" stop-opacity="0.12"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect x="18" y="18" width="764" height="564" fill="none" stroke="#7c4a44" stroke-opacity="0.35" stroke-width="1.5"/>
+  <path d="M -20 480 C 150 400, 250 560, 420 460 S 700 380, 860 470" fill="none" stroke="url(#line)" stroke-width="2"/>
+  <path d="M -20 140 C 180 220, 260 40, 460 120 S 700 220, 860 110" fill="none" stroke="url(#line)" stroke-width="2"/>
+  <g transform="translate(400,278)" opacity="0.55">
+    <circle r="54" fill="none" stroke="#3a2e28" stroke-width="2"/>
+    <path d="M -26 -14 L -18 -26 L 18 -26 L 26 -14 L 32 -14 C 36 -14 38 -12 38 -8 L 38 22 C 38 26 36 28 32 28 L -32 28 C -36 28 -38 26 -38 22 L -38 -8 C -38 -12 -36 -14 -32 -14 Z" fill="none" stroke="#3a2e28" stroke-width="2.2" stroke-linejoin="round"/>
+    <circle cx="0" cy="6" r="13" fill="none" stroke="#3a2e28" stroke-width="2.2"/>
+  </g>
+  <text x="400" y="372" text-anchor="middle" font-family="Georgia, 'Playfair Display', serif" font-size="22" letter-spacing="4" fill="#3a2e28" opacity="0.5">BELLISSIMA GY&#337;R</text>
+</svg>
